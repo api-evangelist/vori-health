@@ -64,5 +64,33 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Vori Health is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.nasdaqprivatemarket.com/
+Vori Health is a nationwide, virtual-first musculoskeletal (MSK) medical practice headquartered in
+Nashville, Tennessee, founded in 2020 by neurosurgeon Dr. Ryan Grant (co-founder, CEO) and orthopedic
+surgeon Dr. Mary O'Connor (co-founder, Chief Medical Officer). It treats back, neck and joint pain with
+physician-led integrated care teams — board-certified physiatrists licensed in all 50 states working
+alongside physical therapists, registered dietitians and health coaches — delivered virtually and in
+person through a patient mobile and web application, and sold to employers, health plans, benefits
+consultants and risk-bearing provider groups.
+
+## Developer surface
+
+**Vori Health publishes no public API and no developer program.** Probed 2026-09-04:
+
+- No OpenAPI, Swagger, GraphQL SDL, AsyncAPI, gRPC/Protobuf or WSDL on any host in the estate.
+- No `/.well-known/` document on `vorihealth.com`, `www.vorihealth.com`, `app.vorihealth.com` or
+  `api.vorihealth.com` — see [`well-known/vori-health-well-known.yml`](well-known/vori-health-well-known.yml).
+- `api.vorihealth.com` is an AWS API Gateway that returns `403 {"message":"Missing Authentication Token"}`
+  for every path, including a nonsense control path. It is the private backend for the patient app.
+- `app.vorihealth.com` is an Angular SPA that returns HTTP 200 with the same HTML shell for every path.
+- No GitHub organization, no first-party SDK in any public package registry, no hosted MCP server,
+  no A2A agent card, no `llms.txt` published by the company.
+
+## Links
+
+- Website — https://www.vorihealth.com/
+- About — https://www.vorihealth.com/about
+- FAQ — https://www.vorihealth.com/faq
+- Resources — https://www.vorihealth.com/resources
+- Patient web app — https://app.vorihealth.com/
+- Terms of Use — https://www.vorihealth.com/legal/terms-of-use
+- Privacy Policy — https://www.vorihealth.com/legal/privacy-policy

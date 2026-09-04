@@ -1,0 +1,119 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  Anonymous HTTPS probes of the RFC 8615 well-known namespace on every host this record
+  knows: the registrable domain and www (Webflow marketing site), the patient application
+  host app.vorihealth.com (Angular SPA on Cloudflare), and the application backend host
+  api.vorihealth.com (AWS API Gateway, d-n836o9gegb.execute-api.us-east-1.amazonaws.com).
+note: >-
+  NO well-known document is served anywhere on the vorihealth.com estate. Recorded as an
+  absence, not a presence: no WellKnown or SecurityTxt pointer is emitted in apis.yml.
+  Two false-positive shapes were seen and rejected. (1) app.vorihealth.com answers HTTP 200
+  with the same 15,934-byte Angular index.html for EVERY path, including
+  /.well-known/openid-configuration, /.well-known/oauth-authorization-server and
+  /.well-known/api-catalog — an SPA catch-all, not a document. (2) api.vorihealth.com
+  answers HTTP 403 {"message":"Missing Authentication Token"} for every path, which is the
+  AWS API Gateway default for an unmatched or authorizer-protected route and is
+  indistinguishable from a route that does not exist; nothing there is anonymously readable.
+  The apex and www hosts return Webflow's "Invalid .well-known request" 404 body.
+hosts:
+- host: vorihealth.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: www.vorihealth.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: app.vorihealth.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    note: >-
+      HTML SPA shell (text/html, 15934 bytes, <title>VoriHealth</title>) — not a document.
+      Treated as a miss.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    note: HTML SPA shell — not a document. Treated as a miss.
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    note: HTML SPA shell — not a document. Treated as a miss.
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: api.vorihealth.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    file: null
+    note: >-
+      AWS API Gateway default {"message":"Missing Authentication Token"} — identical on every
+      path including nonsense controls. Not evidence of a route.
+  - path: /.well-known/openid-configuration
+    status: 403
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    file: null
+  - path: /.well-known/api-catalog
+    status: 403
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 403
+    file: null
+  - path: /.well-known/agent.json
+    status: 403
+    file: null

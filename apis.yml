@@ -1,17 +1,63 @@
 aid: vori-health
 name: Vori Health
-description: 'Vori Health is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Vori Health is a nationwide, virtual-first musculoskeletal (MSK) medical practice
+  headquartered in Nashville, Tennessee and founded in 2020 by neurosurgeon Dr. Ryan Grant
+  (co-founder and CEO) and orthopedic surgeon Dr. Mary O'Connor (co-founder and Chief Medical
+  Officer), formerly chair of orthopedics at Mayo Clinic in Florida. It treats back, neck and
+  joint pain through physician-led, integrated care teams that pair board-certified
+  physiatrists licensed in all 50 states with physical therapists, registered dietitians and
+  health coaches, delivered virtually and in person through a patient mobile and web
+  application, and sold to employers, health plans, benefits consultants and risk-bearing
+  provider groups as a value-based alternative to surgery-first MSK care. The company raised a
+  $53M Series B led by NEA with AlleyCorp, Intermountain Ventures, Echo Health Ventures and Max
+  Ventures participating, and partners with payers and enablers including Humana, Pearl Health,
+  Allstate Benefits, Marpai, Contigo Health, WholeHealth Living, Firefly Health and Ophelia.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-09-04'
+  method: derived
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - security
+  generated: '2026-09-04'
+  method: derived
+image: https://cdn.prod.website-files.com/607dd1658eb71ebcf9c05549/60833690431161c82dac845c_webclip-256x256.png
 url: https://raw.githubusercontent.com/api-evangelist/vori-health/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
+x-source-url: https://www.nasdaqprivatemarket.com/
 x-tier: stub
 x-tier-reason: harvest
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-09-04'
 modified: '2026-09-04'
 tags:
 - Company
+- Health Care
+- Digital Health
+- Musculoskeletal
+- Telehealth
+- Virtual Care
+- Physical Therapy
+- Orthopedics
+- Employer Benefits
+- Value-Based Care
+- United States
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +65,62 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/vori-health-domain-security.yml
+- type: LLMsTxt
+  url: llms/vori-health-llms.txt
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.vorihealth.com/
+- type: About
+  url: https://www.vorihealth.com/about
+- type: Support
+  url: https://www.vorihealth.com/faq
+- type: Blog
+  url: https://www.vorihealth.com/resources
+- type: Login
+  url: https://app.vorihealth.com/
+- type: TermsOfService
+  url: https://www.vorihealth.com/legal/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.vorihealth.com/legal/privacy-policy
+- type: x-MobileApp
+  url: https://apps.apple.com/us/app/vori-health/id1534621456
+- type: x-MobileApp
+  url: https://play.google.com/store/apps/details?id=com.voyahealth.app
+- type: Careers
+  url: https://www.vorihealth.com/careers
+- type: PressReleases
+  url: https://www.vorihealth.com/press
+- type: LinkedIn
+  url: https://www.linkedin.com/company/vori-health
+x-enrichment:
+  date: '2026-09-04'
+  status: minimal
+  artifacts_added: 3
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Vori Health is a licensed medical practice that ships real software — iOS, Android and web
+    patient apps — but no developer program of any kind: its only API host,
+    api.vorihealth.com (an AWS API Gateway at d-n836o9gegb.execute-api.us-east-1.amazonaws.com),
+    returns the same 403 {"message":"Missing Authentication Token"} for /openapi.json, /graphql,
+    /fhir/metadata, every /.well-known/ path and a nonsense control path alike, all 230 URLs in
+    the company sitemap are clinical or marketing pages with no /developers, /api or /docs entry,
+    app.vorihealth.com is an Angular SPA that answers 200 with the same HTML shell for every path,
+    and github.com/vorihealth and github.com/vori-health both 404.
+  evidence:
+  - url: https://api.vorihealth.com/openapi.json
+    status: 403
+  - url: https://api.vorihealth.com/zzz-nonexistent-control-9f3a
+    status: 403
+  - url: https://www.vorihealth.com/openapi.json
+    status: 404
+  - url: https://www.vorihealth.com/.well-known/agent-card.json
+    status: 404
+  - url: https://www.vorihealth.com/llms.txt
+    status: 404
+  - url: https://github.com/vorihealth
+    status: 404
+  checked: '2026-09-04'
